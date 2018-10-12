@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #141417;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+nav {
+    border: 1px solid grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;   
+}
+
+main {
+    margin: 0 5%;
+}
+
+footer {
+    margin: 0 30px;
+    color: grey;
+    display: flex;
+    justify-content: space-between;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.instructions {
+    font-size: 1em;
+    padding: 5% 0;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid grey;
+}
+
+h4 {
+    color: #4157B7;
+}
+
+.photo {
+    height: 200px;
+    width: 200px;
+}
+
+.contest {
+    height: 60%;
+    width: 100%;
+}
+
+.landing {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contest-card {
+    width: 20em;
+    height: 25em;
+    background-color: #313139;
+    text-align: center;
+}
+
+.coming-soon {
+    width: 35em;
+    height: 25em;
+    background-color: #1A1A1F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grey-text {
+    color: grey;
+}
+
+.blue-btn {
+    background-color: #5575F6;
+    color: white;
+    border-radius: 25px;
+    padding: 8px 12px;
+}
+
+.landing-head {
+    padding: 2em 0;
+}
+
+.contest-photos {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.categories a {
+    font-size: 1em;
+    margin-right: 30px;
+    padding: 10px 30px;
+    border: 1px solid #5575F6;
+    color: #5575F6;
+    border-radius: 40px;
+}
+
+.categories {
+    display: flex;
+    
+}

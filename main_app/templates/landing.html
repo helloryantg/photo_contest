@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="instructions">
+    <h4>ABOUT THIS APP</h2>
+    <p>Create an account to start a photo contest between your friends and family, or log in to vote for your favorites!</p>     
+</div>
+
+<div class="landing-head">
+    <h4>MOST RECENT CONTEST</h4>
+</div>
+
+<div class="landing">
+    {% for contest in contests %}
+    <div class="contest-card">
+        <p>{{contest.likes}}</p>
+        <img class="photo contest" src="{{contest.photo_url}}" alt="contest image">
+        <br>
+        <br>
+        <div class="contest-info grey-text">
+            <p>{{contest.end_date}} | {{contest.members}}</p>
+        </div>
+        <h3>{{contest.name}}</h3>
+        <br>
+        <a class="blue-btn" href="{% url 'photos_page' contest.id %}">View Contest</a>
+    </div>
+    {% endfor %}
+    
+    <div class="coming-soon grey-text">
+        <p>More content coming soon!</p>
+        <a href="contests/create/">Create Contest</a>
+    </div>
+</div>
+
+{% endblock %}

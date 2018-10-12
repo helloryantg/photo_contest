@@ -1,0 +1,35 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Photo Contest</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Like.</h1>
+            <div class="nav-links">
+                <a href="{% url 'landing' %}">Home</a>
+                <a href="{% url 'landing' %}">Contests</a>
+                <a href="{% url 'my_account' user.id %}">My account</a>
+                <a href="{% url 'login' %}">Log In</a>
+                <a href="{% url 'signup' %}">Sign Up</a>
+                <a href="{% url 'logout' %}">Log Out</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>Copyright 2018</p>
+        <p>All photos are copyright by owners, please do not reuse and/or re-purpose</p>
+    </footer>
+</body>
+</html>
