@@ -1,7 +1,11 @@
-* {
+*, *::before, *::after {
     box-sizing: border-box;
+}
+
+* {
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 body {
@@ -10,49 +14,71 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
-nav {
-    border: 1px solid grey;
+h1 {
+    padding-top: 10px;
+    color: #4157B7;
+    font-size: 3em;
+}
+
+.nav-links {
     display: flex;
+    justify-content: space-around;
+    font-size: 120%;
+    width: 20em;
+}
+
+.nav-links a {
+    height: 2em;
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    line-height: 0;
+}
+
+.nav-links a:hover {
+    background-color: rgba(0, 0, 0, .3);
+    color: #4157B7;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Source Code Pro';
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 30px;   
 }
 
 main {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
     margin: 0 5%;
 }
 
-footer {
-    margin: 0 30px;
-    color: grey;
-    display: flex;
-    justify-content: space-between;
-}
 
-a {
-    text-decoration: none;
-    color: white;
+
+footer {
+    color: grey;
+    padding: 1em 0;
 }
 
 .instructions {
-    font-size: 1em;
-    padding: 5% 0;
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 1px solid grey;
+    padding: 1em 0;
 }
 
 h4 {
     color: #4157B7;
 }
 
-.photo {
-    height: 200px;
-    width: 200px;
-}
 
 .contest {
     height: 60%;
@@ -61,14 +87,12 @@ h4 {
 
 .landing {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    margin: 1em;
 }
 
 .contest-card {
-    width: 20em;
-    height: 25em;
-    background-color: #313139;
-    text-align: center;
+
 }
 
 .coming-soon {

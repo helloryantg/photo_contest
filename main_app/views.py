@@ -57,7 +57,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect('home')
+    return HttpResponseRedirect('lading')
 
 def signup(request):
     if request.method == 'POST':

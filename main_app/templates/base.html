@@ -16,11 +16,14 @@
             <div class="nav-links">
                 <a href="{% url 'landing' %}">Home</a>
                 <a href="{% url 'landing' %}">Contests</a>
-                <a href="{% url 'my_account' user.id %}">My account</a>
+                <a href="{% url 'my_account' user.id %}">My Account</a>
+            </div>
+            <div class="nav-links">
                 <a href="{% url 'login' %}">Log In</a>
                 <a href="{% url 'signup' %}">Sign Up</a>
                 <a href="{% url 'logout' %}">Log Out</a>
             </div>
+            <hr>
         </nav>
     </header>
     <main>
@@ -28,8 +31,8 @@
         {% endblock %}
     </main>
     <footer>
-        <p>Copyright 2018</p>
         <p>All photos are copyright by owners, please do not reuse and/or re-purpose</p>
+        <p>Copyright 2018</p>
     </footer>
 </body>
 </html>
