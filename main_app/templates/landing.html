@@ -11,13 +11,12 @@
 </div>
 
 <a class="blue-btn" href="contests/create/">Create Contest</a>
-<br>
-<br>
+
 <div class="landing">
     {% for contest in contests %}
-    <div class="contest-card">
-        <img class="contest" src="{{contest.photo_url}}" alt="contest image">
-        <div class="contest-info">
+    <div class="card">
+        <img class="photo" src="{{contest.photo_url}}" alt="contest image">
+        <div class="info">
             <p>{{contest.likes}}</p>
             <p>{{contest.end_date}} | {{contest.members}}</p>
             <h3>{{contest.name}}</h3>
@@ -25,7 +24,7 @@
         </div>
     </div>
     {% endfor %}
-    <div class="contest-card coming-soon">
+    <div class="card coming-soon">
         <p>More contest coming soon!</p>
     </div>
 </div>

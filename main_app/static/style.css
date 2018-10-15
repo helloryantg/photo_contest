@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     padding: 0;
+    margin: 0;
     text-align: center;
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
@@ -12,11 +13,6 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-
-header {
-    margin: 0 40px;
 }
 
 h1 {
@@ -31,29 +27,23 @@ h1 {
 }
 
 .nav-links a {
-    height: 2em;
     text-decoration: none;
     color: white;
     padding: 20px;
 }
 
 .nav-links a:hover {
-    background-color: rgba(0, 0, 0, .3);
     color: #4157B7;
 }
 
 main {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    overflow-y: scroll;
-    margin: 0 auto;
 }
 
 footer {
     color: grey;
-    padding: 1em 0;
+    padding: 20px;
 }
 
 .categories a.active {
@@ -62,19 +52,21 @@ footer {
 }
 
 .instructions {
-    padding: 1em 0;
+    padding-top: 20px;
+    font-size: 80%;
+    margin: 0 15px;
 }
 
 h4 {
     color: #4157B7;
 }
 
-.contest {
+.photo {
     height: 60%;
     width: 100%;
 }
 
-.contest-card {
+.card {
     background-color: #313139;
     margin: 1em auto;
 }
@@ -95,6 +87,17 @@ h4 {
     border-radius: 25px;
     padding: 8px 12px;
     margin: 0 auto;
+}
+
+.red-btn {
+    background-color: #EB3223;
+    color: white;
+    border-radius: 50%;
+    height: 3em;
+    width: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .landing-head {
@@ -132,28 +135,56 @@ h4 {
     color: grey;
 }
 
+.contest-head {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;   
+    align-items: center;
+    line-height: 2em;
+}
+
+.new-post {
+    display: flex;
+    flex-direction: row;
+}
+
 @media only screen and (min-width: 600px) {
+    header {
+        width: 100%
+    }
+
+    h1 {
+      margin: 20px;  
+    }
+
     nav {
         display: flex;
-        width: 100%;
         justify-content: space-between;
-        text-align: center;
         align-items: baseline;
     }
-    
+
     .landing {
         width: 100%;
         flex-direction: row;
         flex-wrap: wrap;
     }
 
-    .contest-card {
-        width: 32%;
+    .card {
+        width: 30%;
     }
 
-    .contest-info {
+    .info {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+    }
+
+    .photo {
+        height: 60%;
+        width: 100%;
+    }
+    
+    .contest-head {
+        justify-content: space-between;
     }
 }

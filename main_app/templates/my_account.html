@@ -5,9 +5,9 @@
 <h1>{{ account.username }}'s collection:</h1>
 
 {% for post in posts%}
-<div class="contest-card">
-    <img class="contest" src="{{ post.photo_url }}">
-</div>
+<a class="card" href="/posts/{{ post.id }}">
+    <img class="photo" src="{{ post.photo_url }}">
+</a>
 {% endfor %}
 
 {% endblock %}

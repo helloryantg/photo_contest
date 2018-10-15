@@ -4,7 +4,7 @@ from .forms import LoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Contest, Post
+from .models import Contest, Post, Vote, Comment
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
@@ -104,3 +104,7 @@ def photos_page(request, contest_id):
     cat = request.GET.get('category', 'N')
     posts = contest.post_set.filter(category=cat)
     return render(request, 'contests/index.html', {'contest': contest, 'posts' : posts, 'cat': cat})
+
+def posts_detail(request, post_id):
+    post = Post.objects.get(id=post_id)
+    return render(request, 'posts/detail.html', { 'post': post })

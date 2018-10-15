@@ -1,12 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>{{contest.name}}</h1>
-<p>{{contest.description}}</p>
-<a href="{% url 'contests_update' contest.id %}">Edit Contest</a>
-<a href="{% url 'contests_delete' contest.id %}">Delete Contest</a>
+<header class="contest-head">
+    <div class="contest-info">
+        <div>
+            <p>{{contest.end_date}}</p>
+            <h2>{{contest.name}}</h2>
+        </div>
+        <div>
+            <a href="{% url 'contests_update' contest.id %}">Edit Contest</a>
+            <a href="{% url 'contests_delete' contest.id %}">Delete Contest</a>
+        </div>
+    </div>
+    <div class="contest-likes">
+        {% if user.is_authenticated %}
+            <div class="new-post">
+                <a class="blue-btn" href="{% url 'posts_create' %}">New Post</a>
+                <div class="red-btn">30</div>
+            </div>    
+        {% else %}
+            <a class ="blue-btn" href="{% url 'signup' %}">Sign in to vote!</a>
+        {% endif %}
+    </div>
+</header>
+    <p class="grey-text">Please vote for only one person per category below.</p>
 
-<p class="grey-text">Please vote for only one person per category below.</p>
 <div class="categories">
         <a href="/contests/{{contest.id}}?category=N" {% ifequal cat 'N' %}class="active"{% endifequal %}>Nature</a>
         <a href="/contests/{{contest.id}}?category=F" {% ifequal cat 'F' %}class="active"{% endifequal %}>Food</a>
@@ -18,15 +36,13 @@
 
 <div class="landing">
     {% for post in posts%}
-    <div class="contest-card">
-        <img class="contest" src="{{ post.photo_url }}" alt="">
-        <div class="contest-info">
-            <a class="blue-btn" href="#">View Post</a>
+    <div class="card">
+        <img class="photo" src="{{ post.photo_url }}">
+        <div class="info">
+            <a class="blue-btn" href="/posts/{{ post.id }}">View Post</a>
         </div>
     </div>
     {% endfor %}
 </div>
-
-
 
 {% endblock %}
