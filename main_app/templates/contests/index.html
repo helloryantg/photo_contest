@@ -7,28 +7,23 @@
 <a href="{% url 'contests_delete' contest.id %}">Delete Contest</a>
 
 <p class="grey-text">Please vote for only one person per category below.</p>
-<div class="all-categories">
-    <div class="categories">
-        <a href="#">Nature</a>
-        <a href="#">Food</a>
-        <a href="#">Animals</a>
-    </div>
-    <div class="categories">
-        <a href="#">Structure</a>
-        <a href="#">People</a>
-        <a href="#">Life</a>
-    </div>
+<div class="categories">
+        <a href="/contests/{{contest.id}}?category=N" {% ifequal cat 'N' %}class="active"{% endifequal %}>Nature</a>
+        <a href="/contests/{{contest.id}}?category=F" {% ifequal cat 'F' %}class="active"{% endifequal %}>Food</a>
+        <a href="/contests/{{contest.id}}?category=A" {% ifequal cat 'A' %}class="active"{% endifequal %}>Animals</a>
+        <a href="/contests/{{contest.id}}?category=S" {% ifequal cat 'S' %}class="active"{% endifequal %}>Structure</a>
+        <a href="/contests/{{contest.id}}?category=P" {% ifequal cat 'P' %}class="active"{% endifequal %}>People</a>
+        <a href="/contests/{{contest.id}}?category=L" {% ifequal cat 'L' %}class="active"{% endifequal %}>Life</a>  
 </div>
 
 <div class="landing">
     {% for post in posts%}
     <div class="contest-card">
-        <div class="card-content">
-            <span class="card-title">{{ post.title }}</span>
-            <img class="photo contest" src="{{ post.photo_url }}" alt="">
+        <img class="contest" src="{{ post.photo_url }}" alt="">
+        <div class="contest-info">
+            <a class="blue-btn" href="#">View Post</a>
         </div>
     </div>
-    <a href="#"></a>
     {% endfor %}
 </div>
 

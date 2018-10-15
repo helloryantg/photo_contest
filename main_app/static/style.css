@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    margin: 0 auto;
     padding: 0;
     text-align: center;
     font-family: 'Roboto', sans-serif;
@@ -17,7 +16,7 @@ body {
 }
 
 header {
-    margin: 0;
+    margin: 0 40px;
 }
 
 h1 {
@@ -55,6 +54,11 @@ main {
 footer {
     color: grey;
     padding: 1em 0;
+}
+
+.categories a.active {
+    background-color: #5575F6;
+    color: white;
 }
 
 .instructions {
@@ -98,21 +102,22 @@ h4 {
 }
 
 .categories a {
-    font-size: 1em;
-    margin-right: 30px;
-    padding: 10px 30px;
+    margin: 0;
+    width: 200px;
     border: 1px solid #5575F6;
     color: #5575F6;
     border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .categories {
-    display: flex;   
-}
-
-.all-categories {
     display: flex;
-    flex-direction: column;   
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-around;
+    margin: 20px auto;
 }
 
 .categories a {
