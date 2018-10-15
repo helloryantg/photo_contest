@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Photo Contest</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
@@ -17,13 +18,10 @@
                 <a href="{% url 'landing' %}">Home</a>
                 <a href="{% url 'landing' %}">Contests</a>
                 <a href="{% url 'my_account' user.id %}">My Account</a>
-            </div>
-            <div class="nav-links">
                 <a href="{% url 'login' %}">Log In</a>
                 <a href="{% url 'signup' %}">Sign Up</a>
                 <a href="{% url 'logout' %}">Log Out</a>
             </div>
-            <hr>
         </nav>
     </header>
     <main>

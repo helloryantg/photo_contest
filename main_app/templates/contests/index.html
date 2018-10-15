@@ -7,24 +7,25 @@
 <a href="{% url 'contests_delete' contest.id %}">Delete Contest</a>
 
 <p class="grey-text">Please vote for only one person per category below.</p>
-<div>
-    
-</div>
-<div class="categories">
-    <a href="#">Nature</a>
-    <a href="#">Food</a>
-    <a href="#">Animals</a>
-    <a href="#">Structure</a>
-    <a href="#">People</a>
-    <a href="#">Life</a>
+<div class="all-categories">
+    <div class="categories">
+        <a href="#">Nature</a>
+        <a href="#">Food</a>
+        <a href="#">Animals</a>
+    </div>
+    <div class="categories">
+        <a href="#">Structure</a>
+        <a href="#">People</a>
+        <a href="#">Life</a>
+    </div>
 </div>
 
-<div class="contest-photos">
+<div class="landing">
     {% for post in posts%}
-    <div class="card">
+    <div class="contest-card">
         <div class="card-content">
             <span class="card-title">{{ post.title }}</span>
-            <img class="photo" src="{{ post.photo_url }}" alt="">
+            <img class="photo contest" src="{{ post.photo_url }}" alt="">
         </div>
     </div>
     <a href="#"></a>

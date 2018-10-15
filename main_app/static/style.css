@@ -1,11 +1,10 @@
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
 * {
-    margin: 0;
+    box-sizing: border-box;
+    margin: 0 auto;
     padding: 0;
     text-align: center;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
 }
 
 body {
@@ -17,6 +16,10 @@ body {
     justify-content: space-between;
 }
 
+header {
+    margin: 0;
+}
+
 h1 {
     padding-top: 10px;
     color: #4157B7;
@@ -24,10 +27,8 @@ h1 {
 }
 
 .nav-links {
-    display: flex;
-    justify-content: space-around;
     font-size: 120%;
-    width: 20em;
+    margin: 0;
 }
 
 .nav-links a {
@@ -35,7 +36,6 @@ h1 {
     text-decoration: none;
     color: white;
     padding: 20px;
-    line-height: 0;
 }
 
 .nav-links a:hover {
@@ -43,28 +43,14 @@ h1 {
     color: #4157B7;
 }
 
-body {
-    margin: 0;
-    height: 100vh;
-    font-family: 'Source Code Pro';
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
 main {
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    text-align: center;
+    justify-content: center;
     overflow-y: scroll;
-    margin: 0 5%;
+    margin: 0 auto;
 }
-
-
 
 footer {
     color: grey;
@@ -79,29 +65,20 @@ h4 {
     color: #4157B7;
 }
 
-
 .contest {
     height: 60%;
     width: 100%;
 }
 
+.contest-card {
+    background-color: #313139;
+    margin: 1em auto;
+}
+
 .landing {
     display: flex;
     flex-direction: column;
-    margin: 1em;
-}
-
-.contest-card {
-
-}
-
-.coming-soon {
-    width: 35em;
-    height: 25em;
-    background-color: #1A1A1F;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0 5%;
 }
 
 .grey-text {
@@ -113,16 +90,11 @@ h4 {
     color: white;
     border-radius: 25px;
     padding: 8px 12px;
+    margin: 0 auto;
 }
 
 .landing-head {
-    padding: 2em 0;
-}
-
-.contest-photos {
-    display: flex;
-    justify-content: space-evenly;
-
+    padding: 10px 0;
 }
 
 .categories a {
@@ -135,6 +107,48 @@ h4 {
 }
 
 .categories {
+    display: flex;   
+}
+
+.all-categories {
+    display: flex;
+    flex-direction: column;   
+}
+
+.categories a {
+    padding: 1em;
     display: flex;
     
+}
+
+.coming-soon {
+    display: flex;
+    align-items: center;
+    color: grey;
+}
+
+@media only screen and (min-width: 600px) {
+    nav {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        text-align: center;
+        align-items: baseline;
+    }
+    
+    .landing {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .contest-card {
+        width: 32%;
+    }
+
+    .contest-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
 }

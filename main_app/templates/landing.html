@@ -13,26 +13,20 @@
 <a class="blue-btn" href="contests/create/">Create Contest</a>
 <br>
 <br>
-<br>
 <div class="landing">
     {% for contest in contests %}
     <div class="contest-card">
-        <p>{{contest.likes}}</p>
         <img class="photo contest" src="{{contest.photo_url}}" alt="contest image">
-        <br>
-        <br>
-        <div class="contest-info grey-text">
+        <div class="contest-info">
+            <p>{{contest.likes}}</p>
             <p>{{contest.end_date}} | {{contest.members}}</p>
+            <h3>{{contest.name}}</h3>
+            <a class="blue-btn" href="{% url 'photos_page' contest.id %}">View Contest</a>
         </div>
-        <h3>{{contest.name}}</h3>
-        <br>
-        <a class="blue-btn" href="{% url 'photos_page' contest.id %}">View Contest</a>
     </div>
     {% endfor %}
-    
-    <div class="coming-soon grey-text">
-        <p>More content coming soon!</p>
-        
+    <div class="contest-card coming-soon">
+        <p>More contest coming soon!</p>
     </div>
 </div>
 
