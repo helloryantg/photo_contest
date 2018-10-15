@@ -4,11 +4,30 @@ from .forms import LoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Contest, Post, Vote, Comment
+from .models import Contest, Post, Comment
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+
+class CommentCreate(CreateView):
+    model = Comment
+    fields = '__all__'
+    success_url = 'posts/detail.html'    
+
+class CommentUpdate(UpdateView):
+    model = Comment
+    fields = '__all__'
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.save()
+        return HttpResponseRedirect('posts/detail.html')
+
+@method_decorator(login_required, name='dispatch')
+class CommentDelete(DeleteView):
+    model = Comment
+    success_url = 'posts/detail.html'
 
 class PostCreate(CreateView):
     model = Post

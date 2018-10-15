@@ -15,7 +15,7 @@
     <div class="contest-likes">
         {% if user.is_authenticated %}
             <div class="new-post">
-                <a class="blue-btn" href="{% url 'posts_create' %}">New Post</a>
+                <a href="{% url 'posts_create' %}">New Post</a>
                 <div class="red-btn">30</div>
             </div>    
         {% else %}

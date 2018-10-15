@@ -7,6 +7,8 @@
 <div class="card">
     <img class="photo" src="{{ post.photo_url }}">
     <p>{{post.created_at}}</p>
+    <a href="{% url 'posts_update' post.id %}">Update Post</a>
+    <a href="{% url 'posts_delete' post.id %}">Delete Post</a>
 </div>
 
 {% endblock %}
