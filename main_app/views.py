@@ -10,24 +10,26 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
-class CommentCreate(CreateView):
-    model = Comment
-    fields = ['text']
-    success_url = 'posts/detail.html'    
+# class CommentCreate(CreateView):
+#     model = Comment
+#     fields = ['text']
+#     success_url = 'posts/detail.html'    
 
 class CommentUpdate(UpdateView):
     model = Comment
     fields = ['text']
-
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.save()
-        return HttpResponseRedirect('posts/detail.html')
+        return redirect(f"/posts/{self.object.post_id}")
 
 @method_decorator(login_required, name='dispatch')
 class CommentDelete(DeleteView):
     model = Comment
-    success_url = 'posts/detail.html'
+    def post(self, request, *args, **kwargs):
+        post_id = self.get_object().post_id
+        Comment.objects.get(id=int(kwargs['pk'])).delete()
+        return redirect(f"/posts/{post_id}")
 
 class PostCreate(CreateView):
     model = Post
@@ -126,8 +128,9 @@ def photos_page(request, contest_id):
 
 def posts_detail(request, post_id):
     post = Post.objects.get(id=post_id)
+    comments = Comment.objects.filter(post=post)
     comment_form = CommentForm()
-    return render(request, 'posts/detail.html', { 'post': post, 'comment_form' : comment_form })
+    return render(request, 'posts/detail.html', { 'post': post, 'comment_form' : comment_form, 'comments': comments })
 
 @login_required
 def add_comment(request, post_id):
@@ -135,5 +138,6 @@ def add_comment(request, post_id):
     if form.is_valid():
         new_comment = form.save(commit=False)
         new_comment.post_id = post_id
+        new_comment.user = request.user
         new_comment.save()
     return redirect('posts_detail', post_id=post_id)
