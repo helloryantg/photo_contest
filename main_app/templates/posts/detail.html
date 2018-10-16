@@ -13,19 +13,28 @@
     {% endifequal %}
 </div>
 
-<div>
-    <form method="POST">
-        {% csrf_token %}
-        {{ comment_form.as_p }}
-        <input type="submit" class="btn" value="Add Comment">
-    </form>
-</div>
+{% if user.is_authenticated %}
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <input type="submit" class="btn" value="Add Comment">
+        </form>
+    </div>
+{% else %}
+    <p>Please login to comment</p>
+{% endif %}
+
 
 {% for comment in post.comment_set.all %}
     <div class="comment-item">
         <p>{{comment.user.username}}</p>
-        <p>{{comment.text}}</p>
         <p>{{comment.created_at}}</p>
+        <p>{{comment.text}}</p>
+        {% ifequal comment.user user %}
+            <a href="{% url 'comments_update' comment.id %}">Update Comment</a>
+            <a href="{% url 'comments_delete' comment.id %}">Delete Comment</a>
+        {% endifequal %}
     </div>
 {% endfor %}
 

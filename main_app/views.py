@@ -17,7 +17,7 @@ class CommentCreate(CreateView):
 
 class CommentUpdate(UpdateView):
     model = Comment
-    fields = '__all__'
+    fields = ['text']
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -70,7 +70,7 @@ class ContestDelete(DeleteView):
 # Create your views here.
 def landing(request):
     contests = Contest.objects.all()
-    return render(request, 'landing.html', {'contests': contests })
+    return render(request, 'landing.html', { 'contests': contests })
 
 def home(request):
     return render(request, 'home.html')
@@ -129,6 +129,7 @@ def posts_detail(request, post_id):
     comment_form = CommentForm()
     return render(request, 'posts/detail.html', { 'post': post, 'comment_form' : comment_form })
 
+@login_required
 def add_comment(request, post_id):
     form = CommentForm(request.POST)
     if form.is_valid():
