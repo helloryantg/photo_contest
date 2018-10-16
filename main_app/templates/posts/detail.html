@@ -7,8 +7,26 @@
 <div class="card">
     <img class="photo" src="{{ post.photo_url }}">
     <p>{{post.created_at}}</p>
-    <a href="{% url 'posts_update' post.id %}">Update Post</a>
-    <a href="{% url 'posts_delete' post.id %}">Delete Post</a>
+    {% ifequal post.user user %}
+        <a href="{% url 'posts_update' post.id %}">Update Post</a>
+        <a href="{% url 'posts_delete' post.id %}">Delete Post</a>
+    {% endifequal %}
 </div>
+
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <input type="submit" class="btn" value="Add Comment">
+    </form>
+</div>
+
+{% for comment in post.comment_set.all %}
+    <div class="comment-item">
+        <p>{{comment.user.username}}</p>
+        <p>{{comment.text}}</p>
+        <p>{{comment.created_at}}</p>
+    </div>
+{% endfor %}
 
 {% endblock %}

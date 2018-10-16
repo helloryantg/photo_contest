@@ -35,13 +35,13 @@
 </div>
 
 <div class="landing">
-    {% for post in posts%}
-    <div class="card">
-        <img class="photo" src="{{ post.photo_url }}">
-        <div class="info">
-            <a class="blue-btn" href="/posts/{{ post.id }}">View Post</a>
+    {% for post in posts %}
+        <div class="card">
+            <img class="photo" src="{{ post.photo_url }}">
+            <div class="info">
+                <a class="blue-btn" href="/posts/{{ post.id }}">View Post</a>
+            </div>
         </div>
-    </div>
     {% endfor %}
 </div>
 

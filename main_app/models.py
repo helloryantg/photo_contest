@@ -34,6 +34,9 @@ class Post(models.Model):
 
 class Comment(models.Model):
     text = models.TextField(max_length=250)
-    created = models.DateField(auto_now_add=True)
+    created_at = models.DateField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['-created_at']

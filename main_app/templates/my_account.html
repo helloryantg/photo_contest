@@ -4,7 +4,7 @@
 
 <h1>{{ account.username }}'s collection:</h1>
 
-{% for post in posts%}
+{% for post in posts %}
 <a class="card" href="/posts/{{ post.id }}">
     <img class="photo" src="{{ post.photo_url }}">
 </a>

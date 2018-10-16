@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import LoginForm
+from .forms import LoginForm, CommentForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -12,7 +12,7 @@ from django.utils.decorators import method_decorator
 
 class CommentCreate(CreateView):
     model = Comment
-    fields = '__all__'
+    fields = ['text']
     success_url = 'posts/detail.html'    
 
 class CommentUpdate(UpdateView):
@@ -126,4 +126,13 @@ def photos_page(request, contest_id):
 
 def posts_detail(request, post_id):
     post = Post.objects.get(id=post_id)
-    return render(request, 'posts/detail.html', { 'post': post })
+    comment_form = CommentForm()
+    return render(request, 'posts/detail.html', { 'post': post, 'comment_form' : comment_form })
+
+def add_comment(request, post_id):
+    form = CommentForm(request.POST)
+    if form.is_valid():
+        new_comment = form.save(commit=False)
+        new_comment.post_id = post_id
+        new_comment.save()
+    return redirect('posts_detail', post_id=post_id)
