@@ -1,0 +1,1 @@
+web: gunicorn photo-contest.wsgi --log-file -
