@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <form action="" method="post">
+
+<h1>Add a Post</h1>
+
+<form action="{% url 'posts_create' contest_id %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <table>
-    {{ form.as_table }}
+      {{ form.as_table }}
     </table>
-    <input type="submit" value="Submit!">
+    Select image: <input type="file" name="photo-file"> 
+    <input class="blue-btn" type="submit" value="Submit!">
   </form>
 {% endblock %}

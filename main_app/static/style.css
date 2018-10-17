@@ -7,12 +7,23 @@
     text-decoration: none;
 }
 
+a {
+    color: white;
+}
+
 body {
     min-height: 100vh;
     background-color: #141417;
     color: white;
     display: flex;
     flex-direction: column;
+}
+
+form {
+    color: #4157B7;
+    text-align: center;
+    font-size: 2em;
+    margin: 0 auto;
 }
 
 h1 {
@@ -23,7 +34,7 @@ h1 {
 
 .nav-links {
     font-size: 120%;
-    margin: 0;
+    margin: 20px 0;
 }
 
 .nav-links a {
@@ -59,22 +70,23 @@ footer {
 
 h4 {
     color: #4157B7;
+    padding-top: 20px;
 }
 
 .photo {
     height: 60%;
     width: 100%;
+    object-fit: cover;
 }
 
 .card {
     background-color: #313139;
-    margin: 1em auto;
+    margin: 6%;
 }
 
 .landing {
     display: flex;
     flex-direction: column;
-    padding: 0 5%;
 }
 
 .grey-text {
@@ -101,7 +113,7 @@ h4 {
 }
 
 .landing-head {
-    padding: 10px 0;
+    margin-top: 30px;
 }
 
 .categories a {
@@ -130,8 +142,6 @@ h4 {
 }
 
 .coming-soon {
-    width: 100%;
-    height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,11 +163,20 @@ h4 {
 
 .comment-item {
     height: 100px;
+    border-bottom: 1px solid #5575F6;
 }
 
 @media only screen and (min-width: 600px) {
     header {
         width: 100%
+    }
+
+    .instructions {
+        display: flex;
+    }
+
+    h4 {
+        margin-right: 20px;
     }
 
     h1 {
@@ -172,13 +191,14 @@ h4 {
 
     .landing {
         width: 100%;
-        flex-direction: row;
-        flex-wrap: wrap;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
     }
 
     .card {
         width: 30%;
-        
+        margin: 1px;
     }
 
     .info {

@@ -9,15 +9,16 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+import uuid
+import boto3
 
-# class CommentCreate(CreateView):
-#     model = Comment
-#     fields = ['text']
-#     success_url = 'posts/detail.html'    
+S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
+BUCKET = 'like-photo-contest'
 
 class CommentUpdate(UpdateView):
     model = Comment
     fields = ['text']
+    
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.save()
@@ -33,8 +34,31 @@ class CommentDelete(DeleteView):
 
 class PostCreate(CreateView):
     model = Post
-    fields = '__all__'
-    success_url = '/'
+    fields = ['title', 'description', 'category']
+
+    def form_valid(self, form):
+       post = form.instance
+       post.user = self.request.user
+       post.contest_id = int(self.kwargs['contest_id'])
+
+       photo_file = self.request.FILES.get('photo-file', None)
+       if photo_file:
+           s3 = boto3.client('s3')
+           key = uuid.uuid4().hex[:6] + \
+               photo_file.name[photo_file.name.rfind('.'):]
+           try:
+               s3.upload_fileobj(photo_file, BUCKET, key)
+               photo_url = f"{S3_BASE_URL}{BUCKET}/{key}"
+               post.photo_url = photo_url
+           except:
+               print('An error occurred uploading file to S3')
+       post.save()
+       return redirect("/")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['contest_id'] = int(self.kwargs['contest_id'])
+        return context
 
 class PostUpdate(UpdateView):
     model = Post
