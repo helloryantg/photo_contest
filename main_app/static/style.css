@@ -7,8 +7,34 @@
     text-decoration: none;
 }
 
-a {
-    color: white;
+.detail-photo {
+    width: 80%;
+    height: auto;
+}
+
+.detail-post {
+    width: 100%;
+}
+
+.post-form {
+    margin-top: 40px;
+}
+
+li {
+    list-style: none;
+}
+
+.larger {
+    font-size: 200%;
+}
+
+.posts {
+    margin: 20px;
+    width: 100%;
+}
+
+a { 
+    color: white; 
 }
 
 body {
@@ -19,11 +45,13 @@ body {
     flex-direction: column;
 }
 
+footer {
+    color: grey;
+    padding: 20px;
+}
+
 form {
     color: #4157B7;
-    text-align: center;
-    font-size: 2em;
-    margin: 0 auto;
 }
 
 h1 {
@@ -47,16 +75,6 @@ h1 {
     color: #4157B7;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-}
-
-footer {
-    color: grey;
-    padding: 20px;
-}
-
 .categories a.active {
     background-color: #5575F6;
     color: white;
@@ -68,28 +86,45 @@ footer {
     margin: 0 15px;
 }
 
+.contests {
+    display: flex;
+    flex-direction: column;
+}
+
+.contest-container {
+   width: 90%;
+   margin: 0 auto;
+}
+
+.contest-info {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.contest-photo {
+    width: 100%;
+}
+
+.index-container {
+    display: flex;
+    flex-direction: column;
+}
+
 h4 {
     color: #4157B7;
     padding-top: 20px;
 }
 
-.photo {
-    height: 60%;
-    width: 100%;
-    object-fit: cover;
-}
 
-.card {
-    background-color: #313139;
-    margin: 6%;
-}
-
-.landing {
+.main-container {
     display: flex;
     flex-direction: column;
 }
 
-.grey-text {
+.grey {
     color: grey;
 }
 
@@ -99,17 +134,6 @@ h4 {
     border-radius: 25px;
     padding: 8px 12px;
     margin: 0 auto;
-}
-
-.red-btn {
-    background-color: #EB3223;
-    color: white;
-    border-radius: 50%;
-    height: 3em;
-    width: 3em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .landing-head {
@@ -130,7 +154,7 @@ h4 {
 .categories {
     display: flex;
     flex-direction: row;
-    width: 90%;
+    width: 75%;
     justify-content: space-around;
     margin: 20px auto;
 }
@@ -138,7 +162,6 @@ h4 {
 .categories a {
     padding: 1em;
     display: flex;
-    
 }
 
 .coming-soon {
@@ -148,12 +171,13 @@ h4 {
     color: grey;
 }
 
-.contest-head {
+.index-head {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;   
     align-items: center;
-    line-height: 2em;
+    line-height: 3em;
 }
 
 .new-post {
@@ -163,20 +187,33 @@ h4 {
 
 .comment-item {
     height: 100px;
-    border-bottom: 1px solid #5575F6;
+    padding-top: 10px 0;
+}
+
+.delete {
+    color: red;
+}
+
+.blue {
+    color: #5575F6;
+}
+
+.like-img {
+    
 }
 
 @media only screen and (min-width: 600px) {
+    .posts {
+        width: 33%;
+    }
+    
+    .details {
+        display: flex;
+        flex-direction: column;
+    }
+
     header {
         width: 100%
-    }
-
-    .instructions {
-        display: flex;
-    }
-
-    h4 {
-        margin-right: 20px;
     }
 
     h1 {
@@ -189,30 +226,39 @@ h4 {
         align-items: baseline;
     }
 
-    .landing {
-        width: 100%;
+
+    .main-container {
         display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .contest-container {
+        margin: 10px 5px;
+        width: 400px;
+    }
+
+    .post-container {
+        display: flex;
+        justify-content: center;
         flex-flow: row wrap;
-        justify-content: space-around;
-    }
-
-    .card {
-        width: 30%;
-        margin: 1px;
-    }
-
-    .info {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
+        width: 100%;
     }
 
     .photo {
-        height: 60%;
-        width: 100%;
+        height: 300px;
+        width: 300px;
     }
-    
-    .contest-head {
+
+    .index-head {
         justify-content: space-between;
+    }
+
+    main {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

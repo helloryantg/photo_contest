@@ -1,40 +1,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<h1>{{ post.title }}</h1>
-
-<div class="card">
-    <img class="photo" src="{{ post.photo_url }}">
-    <p>{{post.created_at}}</p>
-    {% ifequal post.user user %}
-        <a href="{% url 'posts_update' post.id %}">Update Post</a>
-        <a href="{% url 'posts_delete' post.id %}">Delete Post</a>
-    {% endifequal %}
-</div>
-
-{% if user.is_authenticated %}
-    <div>
-        <form action="{% url 'add_comment' post.id %}" method="POST">
-            {% csrf_token %}
-            {{ comment_form.as_p }}
-            <input type="submit" class="btn" value="Add Comment">
-        </form>
-    </div>
-{% else %}
-    <p>Please login to comment</p>
-{% endif %}
-
-{% for comment in comments %}
-    <div class="comment-item">
-        <p>{{comment.user.username}}</p>
-        <p>{{comment.created_at}}</p>
-        <p>{{comment.text}}</p>
-        {% ifequal comment.user user %}
-            <a href="{% url 'comments_update' comment.id %}">Update Comment</a>
-            <a href="{% url 'comments_delete' comment.id %}">Delete Comment</a>
+<div class="details">
+    <h1>{{ post.title }}</h1>
+    
+    <div class="detail-post">
+        <img class="detail-photo" src="{{ post.photo_url }}">
+            <p>{{post.description}}</p>
+            <p>{{post.created_at}}</p>
+        {% ifequal post.user user %}
+            <a href="{% url 'posts_update' post.id %}">Update Post</a>
+            <a class="delete" href="{% url 'posts_delete' post.id %}">Delete Post</a>
         {% endifequal %}
     </div>
-{% endfor %}
+    
+    {% for comment in comments %}
+    <div class="comment-item">
+        <p class="blue">{{comment.user.username}}</p>
+        <p class="grey">{{comment.created_at}}</p>
+        <p>{{comment.text}}</p>
+        {% ifequal comment.user user %}
+        <br>
+        <div>
+            <a href="{% url 'comments_update' comment.id %}">Update Comment</a>
+            <a class="delete" href="{% url 'comments_delete' comment.id %}">Delete Comment</a>
+        </div>
+        {% endifequal %}
+    </div>
+    {% endfor %}
+    {% if user.is_authenticated %}
+        <div>
+            <form action="{% url 'add_comment' post.id %}" method="POST">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <input type="submit" class="btn" value="Add Comment">
+            </form>
+        </div>
+    {% else %}
+        <p>Please login to comment</p>
+    {% endif %}
+</div>
 
 {% endblock %}

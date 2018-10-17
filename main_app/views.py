@@ -40,7 +40,6 @@ class PostCreate(CreateView):
        post = form.instance
        post.user = self.request.user
        post.contest_id = int(self.kwargs['contest_id'])
-
        photo_file = self.request.FILES.get('photo-file', None)
        if photo_file:
            s3 = boto3.client('s3')
@@ -72,7 +71,14 @@ class PostUpdate(UpdateView):
 @method_decorator(login_required, name='dispatch')
 class PostDelete(DeleteView):
     model = Post
-    success_url = '/'
+
+    def post(self, request, *args, **kwargs):
+       self.object = self.get_object()
+       if self.object.user == request.user:
+           self.object.delete()
+           return redirect('/')
+       else:
+           return redirect('/')
 
 class ContestCreate(CreateView):
     model = Contest
@@ -165,3 +171,4 @@ def add_comment(request, post_id):
         new_comment.user = request.user
         new_comment.save()
     return redirect('posts_detail', post_id=post_id)
+

@@ -1,31 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="contests">
+    <div class="instructions">
+        <h4>ABOUT THIS APP</h2>
+        <p>Create an account to start a photo contest between your friends and family, or log in to vote for your favorites!</p>     
+    </div>
 
-<div class="instructions">
-    <h4>ABOUT THIS APP</h2>
-    <p>Create an account to start a photo contest between your friends and family, or log in to vote for your favorites!</p>     
-</div>
+    <div class="landing-head">
+        <a class="blue-btn" href="contests/create/">Create Contest</a>
+        <h4>MOST RECENT CONTEST</h4>
+    </div>
 
-<div class="landing-head">
-    <a class="blue-btn" href="contests/create/">Create Contest</a>
-    <h4>MOST RECENT CONTEST</h4>
-</div>
-
-<div class="landing">
-    {% for contest in contests %}
-    <div class="card">
-        <img class="photo" src="{{contest.photo_url}}" alt="contest image">
-        <div class="info">
-            <p>{{contest.likes}}</p>
-            <p>{{contest.end_date}} | {{contest.members}}</p>
-            <h3>{{contest.name}}</h3>
-            <a class="blue-btn" href="{% url 'photos_page' contest.id %}">View Contest</a>
+    <div class="main-container">
+        {% for contest in contests %}
+        <div class="contest-container">
+            <img class="contest-photo" src="{{contest.photo_url}}" alt="contest image">
+            <div class="contest-info">
+                <p>{{contest.likes}}</p>
+                <p class="grey">{{contest.end_date}}</p>
+                <h3>{{contest.name}}</h3>
+                <a class="blue-btn" href="{% url 'photos_page' contest.id %}">View Contest</a>
+            </div>
         </div>
-    </div>
-    {% endfor %}
-    <div class="card coming-soon">
-        <p>More contest coming soon!</p>
+        {% endfor %}
     </div>
 </div>
-
 {% endblock %}

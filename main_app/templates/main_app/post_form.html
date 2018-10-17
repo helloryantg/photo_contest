@@ -2,14 +2,16 @@
 
 {% block content %}
 
-<h1>Add a Post</h1>
+<form class="post-form" action="{% url 'posts_create' contest_id %}" method="post" enctype="multipart/form-data">
+  <h1>Add a Post</h1>
+  {% csrf_token %}
+  <table>
+    {{ form.as_table }}
+  </table>
+  <table>
+    <tr>Select image: <input type="file" name="photo-file"></tr>  
+  </table>
+  <input class="blue-btn" type="submit" value="Submit!">
+</form>
 
-<form action="{% url 'posts_create' contest_id %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-    </table>
-    Select image: <input type="file" name="photo-file"> 
-    <input class="blue-btn" type="submit" value="Submit!">
-  </form>
 {% endblock %}
