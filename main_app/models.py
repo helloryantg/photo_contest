@@ -40,3 +40,7 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+
+class Like(models.Model):    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)

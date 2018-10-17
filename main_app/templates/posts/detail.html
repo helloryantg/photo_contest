@@ -8,6 +8,16 @@
         <img class="detail-photo" src="{{ post.photo_url }}">
             <p>{{post.description}}</p>
             <p>{{post.created_at}}</p>
+            <p>{{likes}}</p>
+            {% if has_liked == False %}
+                {% if has_liked_category == False %}
+                    <a href="{% url 'add_like' post.id %}">Like the Photo!</a>
+                    
+                {% endif %}
+            {% else %}
+                <a href="{% url 'add_like' post.id %}">UnLike the Photo!</a>
+            {% endif %}
+            <br>
         {% ifequal post.user user %}
             <a href="{% url 'posts_update' post.id %}">Update Post</a>
             <a class="delete" href="{% url 'posts_delete' post.id %}">Delete Post</a>

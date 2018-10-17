@@ -7,6 +7,16 @@
     text-decoration: none;
 }
 
+.photo {
+    height: 300px;
+    width: 300px;
+}
+
+.accounts {
+    display: flex;
+    flex-direction: column;
+}
+
 .detail-photo {
     width: 80%;
     height: auto;
@@ -118,7 +128,6 @@ h4 {
     padding-top: 20px;
 }
 
-
 .main-container {
     display: flex;
     flex-direction: column;
@@ -198,10 +207,6 @@ h4 {
     color: #5575F6;
 }
 
-.like-img {
-    
-}
-
 @media only screen and (min-width: 600px) {
     .posts {
         width: 33%;
@@ -226,7 +231,6 @@ h4 {
         align-items: baseline;
     }
 
-
     .main-container {
         display: flex;
         flex-direction: row;
@@ -246,10 +250,7 @@ h4 {
         width: 100%;
     }
 
-    .photo {
-        height: 300px;
-        width: 300px;
-    }
+    
 
     .index-head {
         justify-content: space-between;

@@ -4,7 +4,7 @@ from .forms import LoginForm, CommentForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Contest, Post, Comment
+from .models import Contest, Post, Comment, Like
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
@@ -158,9 +158,12 @@ def photos_page(request, contest_id):
 
 def posts_detail(request, post_id):
     post = Post.objects.get(id=post_id)
+    has_liked_category = Like.objects.filter(post__category=post.category, user=request.user).exists()
+    has_liked = Like.objects.filter(post=post, user=request.user).exists()
     comments = Comment.objects.filter(post=post)
+    likes = post.like_set.all().count()
     comment_form = CommentForm()
-    return render(request, 'posts/detail.html', { 'post': post, 'comment_form' : comment_form, 'comments': comments })
+    return render(request, 'posts/detail.html', { 'post': post, 'comment_form' : comment_form, 'comments': comments, 'likes': likes, 'has_liked_category': has_liked_category, 'has_liked': has_liked })
 
 @login_required
 def add_comment(request, post_id):
@@ -171,4 +174,14 @@ def add_comment(request, post_id):
         new_comment.user = request.user
         new_comment.save()
     return redirect('posts_detail', post_id=post_id)
+
+def add_like(request, post_id):
+    post = Post.objects.get(id=post_id)
+    has_liked = Like.objects.filter(post__category=post.category, user=request.user).exists()
+    if not has_liked:
+        new_like, created = Like.objects.get_or_create(user=request.user, post_id=post_id)
+    return redirect('posts_detail', post_id=post_id)
+
+  
+
 
