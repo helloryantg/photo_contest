@@ -21,9 +21,8 @@ class Contest(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=50)
-    description = models.TextField(max_length=250)
     created_at = models.DateField(auto_now_add=True)
-    photo_url = models.CharField(max_length=150, default='https://i.imgur.com/IcvbvO5.jpg')
+    photo_url = models.CharField(max_length=150, default='https://via.placeholder.com/350x350')
     category = models.CharField(
         max_length=1,
         choices=CATEGORIES,

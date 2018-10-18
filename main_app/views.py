@@ -182,6 +182,6 @@ def add_like(request, post_id):
         new_like, created = Like.objects.get_or_create(user=request.user, post_id=post_id)
     return redirect('posts_detail', post_id=post_id)
 
-  
+
 
 

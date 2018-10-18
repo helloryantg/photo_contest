@@ -6,10 +6,12 @@
         <p>Create an account to start a photo contest between your friends and family, or log in to vote for your favorites!</p>     
     </div>
 
-    <div class="landing-head">
-        <a class="blue-btn" href="contests/create/">Create Contest</a>
-        <h4>MOST RECENT CONTEST</h4>
-    </div>
+    {% ifequal post.user user %}
+        <div class="landing-head">
+            <a class="blue-btn" href="contests/create/">Create Contest</a>
+            <h4>MOST RECENT CONTEST</h4>
+        </div>
+    {% endifequal %}
 
     <div class="main-container">
         {% for contest in contests %}

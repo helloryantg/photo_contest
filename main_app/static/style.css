@@ -79,6 +79,7 @@ h1 {
     text-decoration: none;
     color: white;
     padding: 20px;
+    font-size: 70%;
 }
 
 .nav-links a:hover {
@@ -158,19 +159,15 @@ h4 {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1em;
 }
 
 .categories {
     display: flex;
     flex-direction: row;
-    width: 75%;
+    width: 80%;
     justify-content: space-around;
     margin: 20px auto;
-}
-
-.categories a {
-    padding: 1em;
-    display: flex;
 }
 
 .coming-soon {
@@ -208,8 +205,26 @@ h4 {
 }
 
 @media only screen and (min-width: 600px) {
+    .categories {
+        width: 60%;
+    }
+    
+    .contests {
+        width: 100%;
+    }
+
+    .contest-container {
+        margin: 10px 5px;
+        width: 45%;
+    }
+    
+    .nav-links a {
+        font-size: 100%;
+    }
+
     .posts {
-        width: 33%;
+        width: 30%;
+        
     }
     
     .details {
@@ -231,6 +246,10 @@ h4 {
         align-items: baseline;
     }
 
+    .index-container {
+        width: 100%;
+    }
+
     .main-container {
         display: flex;
         flex-direction: row;
@@ -238,19 +257,13 @@ h4 {
         justify-content: center;
     }
 
-    .contest-container {
-        margin: 10px 5px;
-        width: 400px;
-    }
-
     .post-container {
         display: flex;
         justify-content: center;
-        flex-flow: row wrap;
-        width: 100%;
+        /* flex-flow: row wrap; */
+        width: 80%;
+        margin: 0 auto;
     }
-
-    
 
     .index-head {
         justify-content: space-between;
