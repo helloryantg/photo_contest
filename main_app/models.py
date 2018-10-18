@@ -12,7 +12,7 @@ CATEGORIES = (
 
 class Contest(models.Model):
     name = models.CharField(max_length=50)
-    description = models.TextField(max_length=250)
+    description = models.TextField(max_length=500)
     end_date = models.DateField()
     photo_url = models.CharField(max_length=150, default='https://via.placeholder.com/300x300')
 
@@ -32,7 +32,7 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Comment(models.Model):
-    text = models.TextField(max_length=250)
+    text = models.TextField(max_length=150)
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)

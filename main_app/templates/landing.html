@@ -5,7 +5,7 @@
         <h4>ABOUT THIS APP</h2>
         <p>Create an account to start a photo contest between your friends and family, or log in to vote for your favorites!</p>     
     </div>
-
+    <br>
     {% ifequal post.user user %}
         <div class="landing-head">
             <a class="blue-btn" href="contests/create/">Create Contest</a>
@@ -21,6 +21,7 @@
                 <p>{{contest.likes}}</p>
                 <p class="grey">{{contest.end_date}}</p>
                 <h3>{{contest.name}}</h3>
+                <br>
                 <a class="blue-btn" href="{% url 'photos_page' contest.id %}">View Contest</a>
             </div>
         </div>

@@ -5,7 +5,8 @@
         <div class="index-info">
             <div>
                 <p class="grey" >Contest Ends: {{contest.end_date}}</p>
-                <h2 class="blue" >{{contest.name}}</h2>
+                <h1 class="blue" >{{contest.name}}</h1>
+                <p>Contest Likes: {{total_likes}} likes</p>
             </div>
             {% ifequal post.user user %}
                 <div>
@@ -18,10 +19,10 @@
             {% if user.is_authenticated %}
                 <div class="new-post">
                     <a class="blue c-new-post" href="{% url 'posts_create' contest.id %}">Create a New Post</a>  
-                    <p>Contest Likes: {{total_likes}} likes</p>
-                </div>    
+                </div>
+                <br>    
             {% else %}
-                <a class ="blue-btn" href="{% url 'signup' %}">Sign in to vote!</a>
+                <a class ="grey" href="{% url 'signup' %}">Please Sign Up to Create Posts!</a>
             {% endif %}
         </div>
     </header>

@@ -141,10 +141,10 @@ def login_view(request):
                     return HttpResponseRedirect('/')
                 else:
                     print("The account has been disabled.")
-                    return HttpResponseRedirect('/')
+                    return HttpResponseRedirect('/login/')
             else:
                 print("The username and/or password is incorrect.")
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect('/login/')
     else:
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
@@ -180,6 +180,7 @@ def photos_page(request, contest_id):
     total_likes = Like.objects.filter(post__contest=contest).count()
     return render(request, 'contests/index.html', {'contest': contest, 'posts' : posts, 'cat': cat, 'total_likes': total_likes})
 
+@login_required
 def posts_detail(request, post_id):
     post = Post.objects.get(id=post_id)
     has_liked_category = Like.objects.filter(post__category=post.category, user=request.user).exists()

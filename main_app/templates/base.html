@@ -17,7 +17,7 @@
             <div class="nav-links">
                 <a href="{% url 'landing' %}">Contests</a> |
                 {% if user.is_authenticated %}
-                    <a href="{% url 'my_account' user.id %}">{{user.username}}</a> |
+                    <a id="user-name" href="{% url 'my_account' user.id %}">{{user.username}}</a> |
                     <a href="{% url 'logout' %}">Log Out</a>
                     {% else %}
                     <a href="{% url 'login' %}">Log In</a> |

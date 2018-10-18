@@ -2,25 +2,18 @@
 
 {% block content %}
 
-<form class="post-form" method="post" enctype="multipart/form-data">
-  <h1>
-    {% with "true" as data %} 
-      {% if data == "true" %}
-        Edit
-      {% else %}
-        Add
-      {% endif %}
-    {% endwith %}
-    a Post
-  </h1>
-  {% csrf_token %}
-  <table>
-    {{ form.as_table }}
-  </table>
-  <table>
-    <tr>Select image: <input type="file" name="photo-file"></tr>  
-  </table>
-  <input class="blue-btn" type="submit" value="Submit!">
+<form class="post-create-form" method="post" enctype="multipart/form-data">
+    <h2>Post</h2>
+    <h3>Title:</h3>
+    <br>
+    {% csrf_token %}
+    {{ form.as_p }}   
+    <br>
+    <h3 class="grey">Select image:</h3>  
+    <input class="inputfile" type="file" size="90" name="photo-file"> 
+    <br>
+    <input class="btn" type="submit" value="Submit!">
 </form>
+
 
 {% endblock %}

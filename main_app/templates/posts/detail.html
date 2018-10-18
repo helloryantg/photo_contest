@@ -11,39 +11,45 @@
             <a class="blue" href="{% url 'posts_update' post.id %}">Edit Post</a> <span class="grey">|</span> 
             <a class="blue" href="{% url 'posts_delete' post.id %}">Delete Post</a>
         {% endifequal %}
-            <p>{{post.created_at}}</p>
-            <p>Photo likes: {{likes}}</p>
+            <p class="grey">{{post.created_at}}</p>
+            <h3 class="blue">Likes: {{likes}}</h3>
+            <br>
             {% if like == None %}
                 {% if has_liked_category == False %}
-                    <a href="{% url 'add_like' post.id %}">Like the Photo!</a>
-
+                    <a class="like-btn" href="{% url 'add_like' post.id %}">Like</a>
                 {% endif %}
             {% else %}
-                <a href="{% url 'un_like' like.id %}">UnLike the Photo!</a>
+                <a class="like-btn" href="{% url 'un_like' like.id %}">UnLike</a>
             {% endif %}
             <br>
         
     </div>
     
     {% for comment in comments %}
+
+    <br>
+    <br>
     <div class="comment-item">
-        <p class="blue">{{comment.user.username}}</p>
-        <p class="grey">{{comment.created_at}}</p>
-        <p>{{comment.text}}</p>
-        {% ifequal comment.user user %}
+        <p class="grey">{{comment.user.username}}</p>
+        <h3 class="blue">{{comment.text}}</h3>
         <br>
+        <p class="grey">{{comment.created_at}}</p>
+        {% ifequal comment.user user %}
         <div>
-            <a href="{% url 'comments_update' comment.id %}">Update Comment</a>
-            <a class="delete" href="{% url 'comments_delete' comment.id %}">Delete Comment</a>
+            <a class="grey" href="{% url 'comments_update' comment.id %}">Update Comment</a> <span class="grey">|</span> 
+            <a class="grey" href="{% url 'comments_delete' comment.id %}">Delete Comment</a>
         </div>
         {% endifequal %}
     </div>
     {% endfor %}
     {% if user.is_authenticated %}
+        <br>
+        <br>
         <div>
             <form action="{% url 'add_comment' post.id %}" method="POST">
                 {% csrf_token %}
                 {{ comment_form.as_p }}
+                <br>
                 <input type="submit" class="btn" value="Add Comment">
             </form>
         </div>
