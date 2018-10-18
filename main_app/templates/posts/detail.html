@@ -13,13 +13,13 @@
         {% endifequal %}
             <p>{{post.created_at}}</p>
             <p>Photo likes: {{likes}}</p>
-            {% if has_liked == False %}
+            {% if like == None %}
                 {% if has_liked_category == False %}
                     <a href="{% url 'add_like' post.id %}">Like the Photo!</a>
 
                 {% endif %}
             {% else %}
-                <a href="{% url 'add_like' post.id %}">UnLike the Photo!</a>
+                <a href="{% url 'un_like' like.id %}">UnLike the Photo!</a>
             {% endif %}
             <br>
         

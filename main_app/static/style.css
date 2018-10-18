@@ -7,6 +7,13 @@
     text-decoration: none;
 }
 
+.btn {
+    height: 30px;
+    width: 100px;
+    background-color: black;
+    color: white;
+}
+
 .photo {
     height: 300px;
     width: 300px;
@@ -39,7 +46,7 @@ li {
 }
 
 .posts {
-    margin: 20px;
+    margin: 10px;
     width: 100%;
 }
 
@@ -58,6 +65,7 @@ body {
 footer {
     color: grey;
     padding: 20px;
+    font-size: 50%;
 }
 
 form {
@@ -186,11 +194,6 @@ h4 {
     line-height: 3em;
 }
 
-.new-post {
-    display: flex;
-    flex-direction: row;
-}
-
 .comment-item {
     height: 100px;
     padding-top: 10px 0;
@@ -202,6 +205,21 @@ h4 {
 
 .blue {
     color: #5575F6;
+}
+
+.c-new-post {
+    border: 2px solid #5575F6;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.c-new-post:hover {
+    background-color: #5575F6;
+    color: white;
+}
+
+.contest-rules {
+    font-size: 50%;
 }
 
 @media only screen and (min-width: 600px) {
@@ -223,7 +241,6 @@ h4 {
     }
 
     .posts {
-        width: 30%;
         
     }
     
@@ -259,9 +276,9 @@ h4 {
 
     .post-container {
         display: flex;
+        flex-direction: row;
         justify-content: center;
-        /* flex-flow: row wrap; */
-        width: 80%;
+        width: 90%;
         margin: 0 auto;
     }
 
@@ -274,5 +291,13 @@ h4 {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    
+    .footer {
+        font-size: 90%;
+    }
+
+    .contest-rules {
+        font-size: 100%;
     }
 }

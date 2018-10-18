@@ -2,8 +2,17 @@
 
 {% block content %}
 
-<form class="post-form" action="{% url 'posts_create' contest_id %}" method="post" enctype="multipart/form-data">
-  <h1>Add a Post</h1>
+<form class="post-form" method="post" enctype="multipart/form-data">
+  <h1>
+    {% with "true" as data %} 
+      {% if data == "true" %}
+        Edit
+      {% else %}
+        Add
+      {% endif %}
+    {% endwith %}
+    a Post
+  </h1>
   {% csrf_token %}
   <table>
     {{ form.as_table }}

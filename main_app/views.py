@@ -15,6 +15,7 @@ import boto3
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'like-photo-contest'
 
+@method_decorator(login_required, name='dispatch')
 class CommentUpdate(UpdateView):
     model = Comment
     fields = ['text']
@@ -32,9 +33,10 @@ class CommentDelete(DeleteView):
         Comment.objects.get(id=int(kwargs['pk'])).delete()
         return redirect(f"/posts/{post_id}")
 
+@method_decorator(login_required, name='dispatch')
 class PostCreate(CreateView):
     model = Post
-    fields = ['title', 'description', 'category']
+    fields = ['title', 'category']
 
     def form_valid(self, form):
        post = form.instance
@@ -52,39 +54,59 @@ class PostCreate(CreateView):
            except:
                print('An error occurred uploading file to S3')
        post.save()
-       return redirect("/")
+       return redirect(f"/posts/{post.id}")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['contest_id'] = int(self.kwargs['contest_id'])
         return context
 
+@method_decorator(login_required, name='dispatch')
 class PostUpdate(UpdateView):
     model = Post
-    fields = '__all__'
+    fields = ['title', 'category']
 
     def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.save()
-        return HttpResponseRedirect('/')
+       post = form.instance
+       post.user = self.request.user
+       photo_file = self.request.FILES.get('photo-file', None)
+       if photo_file:
+           s3 = boto3.client('s3')
+           key = uuid.uuid4().hex[:6] + \
+               photo_file.name[photo_file.name.rfind('.'):]
+           try:
+               s3.upload_fileobj(photo_file, BUCKET, key)
+               photo_url = f"{S3_BASE_URL}{BUCKET}/{key}"
+               post.photo_url = photo_url
+           except:
+               print('An error occurred uploading file to S3')
+       post.save()
+       return redirect(f"/posts/{post.id}")
+    
+#     def update_variable(self, value):
+#         data = value
+#         return data    
+# register.filter('update_variable', update_variable)
 
 @method_decorator(login_required, name='dispatch')
 class PostDelete(DeleteView):
     model = Post
 
     def post(self, request, *args, **kwargs):
-       self.object = self.get_object()
-       if self.object.user == request.user:
+        self.object = self.get_object()
+        if self.object.user == request.user:
            self.object.delete()
-           return redirect('/')
-       else:
-           return redirect('/')
+           return redirect("/contests/1")
+        else:
+           return redirect("/contests/1")
 
+@method_decorator(login_required, name='dispatch')
 class ContestCreate(CreateView):
     model = Contest
     fields = '__all__'
     success_url = '/'
 
+@method_decorator(login_required, name='dispatch')
 class ContestUpdate(UpdateView):
     model = Contest
     fields = '__all__'
@@ -99,7 +121,6 @@ class ContestDelete(DeleteView):
     model = Contest
     success_url = '/'
 
-# Create your views here.
 def landing(request):
     contests = Contest.objects.all()
     return render(request, 'landing.html', { 'contests': contests })
@@ -140,6 +161,8 @@ def signup(request):
             user = form.save()
             login(request, user)
             return redirect('/')
+        else:
+            return redirect('/signup/')
     else:
         form = UserCreationForm()
         return render(request, 'signup.html', {'form': form})
@@ -154,16 +177,17 @@ def photos_page(request, contest_id):
     contest = Contest.objects.get(id=contest_id)
     cat = request.GET.get('category', 'N')
     posts = contest.post_set.filter(category=cat)
-    return render(request, 'contests/index.html', {'contest': contest, 'posts' : posts, 'cat': cat})
+    total_likes = Like.objects.filter(post__contest=contest).count()
+    return render(request, 'contests/index.html', {'contest': contest, 'posts' : posts, 'cat': cat, 'total_likes': total_likes})
 
 def posts_detail(request, post_id):
     post = Post.objects.get(id=post_id)
     has_liked_category = Like.objects.filter(post__category=post.category, user=request.user).exists()
-    has_liked = Like.objects.filter(post=post, user=request.user).exists()
+    like = Like.objects.filter(post=post, user=request.user).first()
     comments = Comment.objects.filter(post=post)
     likes = post.like_set.all().count()
     comment_form = CommentForm()
-    return render(request, 'posts/detail.html', { 'post': post, 'comment_form' : comment_form, 'comments': comments, 'likes': likes, 'has_liked_category': has_liked_category, 'has_liked': has_liked })
+    return render(request, 'posts/detail.html', { 'post': post, 'comment_form' : comment_form, 'comments': comments, 'likes': likes, 'has_liked_category': has_liked_category, 'like': like })
 
 @login_required
 def add_comment(request, post_id):
@@ -175,6 +199,7 @@ def add_comment(request, post_id):
         new_comment.save()
     return redirect('posts_detail', post_id=post_id)
 
+@login_required
 def add_like(request, post_id):
     post = Post.objects.get(id=post_id)
     has_liked = Like.objects.filter(post__category=post.category, user=request.user).exists()
@@ -182,6 +207,8 @@ def add_like(request, post_id):
         new_like, created = Like.objects.get_or_create(user=request.user, post_id=post_id)
     return redirect('posts_detail', post_id=post_id)
 
-
-
-
+def un_like(request, like_id):
+    like = Like.objects.get(id=like_id)
+    post_id = like.post_id
+    like.delete()
+    return redirect('posts_detail', post_id=post_id)
