@@ -1,5 +1,5 @@
 # Like. - Photo Contest
-"Like. Photo Contest" is a web-based photo contest app where you can invite your friends and family to upload photos from your computer or mobile device onto the web-hosted database. You have the ability to vote on photos by liking the posts or say what's on your mind by adding a comment. You can browse through all your posts and posts from previous contests.
+"Like. Photo Contest" is a web-based photo contest app where you can invite your friends and family to upload photos from your computer or mobile device onto a web-hosted database. You have the ability to vote on one photo per category by liking the post and say what's on your mind by adding a comment. You can browse through your own posts by clicking your username at the top right. You can also view posts from previous contests.
 
 ![title](./images/title-screenshot.png)
 
