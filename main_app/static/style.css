@@ -37,13 +37,13 @@
 }
 
 input[type="text"] {
-    font-size: 30px;
+    font-size: 20px;
 }
 
-#id_title, #id_text {
-    height: 50px;
-    width: 300px;
-    font-size: 22px;
+#id_title, #id_text  {
+    height: 30px;
+    width: 200px;
+    font-size: 18px;
 }
 
 .post-create-form {
@@ -139,7 +139,6 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 footer {
@@ -155,7 +154,7 @@ form {
 h1 {
     padding-top: 10px;
     color: #4157B7;
-    font-size: 3em;
+    font-size: 1em;
 }
 
 h2 {
@@ -317,6 +316,16 @@ h4 {
 }
 
 @media only screen and (min-width: 600px) {
+    #id_title, #id_text {
+        height: 50px;
+        width: 300px;
+        font-size: 22px;
+    }
+    
+    input[type="text"] {
+        font-size: 30px;
+    }
+    
     .categories a {
         font-size: 100%;
     }
@@ -348,7 +357,8 @@ h4 {
     }
 
     h1 {
-      margin: 20px;  
+      margin: 20px;
+      font-size: 3em;  
     }
 
     nav {
