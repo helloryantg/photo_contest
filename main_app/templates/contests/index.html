@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <div class="index-container">
     <header class="index-head">
         <div class="index-info">
@@ -26,8 +27,9 @@
             {% endif %}
         </div>
     </header>
-        <p class="grey">Please vote for only one person per category below.</p>
-    
+
+    <p class="grey">Please vote for only one person per category below.</p>
+
     <div class="categories">
         <a href="/contests/{{contest.id}}?category=N" {% ifequal cat 'N' %}class="active"{% endifequal %}>Nature</a>
         <a href="/contests/{{contest.id}}?category=F" {% ifequal cat 'F' %}class="active"{% endifequal %}>Food</a>

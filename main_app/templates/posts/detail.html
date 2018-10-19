@@ -3,7 +3,6 @@
 {% block content %}
 <div class="details">
     <h1>{{ post.title }}</h1>
-    
     <div class="detail-post">
         <img class="detail-photo" src="{{ post.photo_url }}">
         <br>
@@ -22,11 +21,8 @@
                 <a class="like-btn" href="{% url 'un_like' like.id %}">UnLike</a>
             {% endif %}
             <br>
-        
     </div>
-    
     {% for comment in comments %}
-
     <br>
     <br>
     <div class="comment-item">

@@ -6,14 +6,14 @@
 ## Technologies Used:
 * Python
 * Django
-    * For the backend, I used Django 
-    * I used Python as our main coding language. Using CreateView, UpdateView, and DeleteView, we used class-based functions to perform our CRUD operations.
+    * For the backend, I used Django to create Models, perform Authentication, and perform CRUD operations
+    * I used Python as our main coding language. Using CreateView, UpdateView, and DeleteView, we used class-based functions to perform our CRUD operations
 * HTML
 * CSS
 * Heroku
-    * I used Heroku to host my app.
-* boto3
-    * I used boto3 to link to my Amazon Web Services account in order to upload photos directly from file.
+    * I used Heroku to host my app
+* Boto3
+    * I used Boto3 to link to my Amazon Web Services account in order to upload photos directly from file
 
 ![title](./images/login-screenshot.png)
 
@@ -34,8 +34,8 @@
 ### Next Steps
 * Create custom Signup form
 * Fix Responsive Design
-* Instead of defaulting to a category page when clicking a contest, show a full page of random photos from the current contest.
+* Instead of defaulting to a category page when clicking a contest, show a full page of random photos from the current contest
 * Create custom categories
-* When the contest has ended, prevent users from posting photos.
+* When the contest has ended, prevent users from posting photos
 
 

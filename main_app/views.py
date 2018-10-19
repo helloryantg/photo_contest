@@ -82,11 +82,6 @@ class PostUpdate(UpdateView):
                print('An error occurred uploading file to S3')
        post.save()
        return redirect(f"/posts/{post.id}")
-    
-#     def update_variable(self, value):
-#         data = value
-#         return data    
-# register.filter('update_variable', update_variable)
 
 @method_decorator(login_required, name='dispatch')
 class PostDelete(DeleteView):
