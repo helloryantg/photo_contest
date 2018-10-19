@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="post">
+<form class="signup-form" method="post">
     <h1>Sign up</h1>
+    <br>
     {% csrf_token %}
     {{ form.as_p }}
     <br>

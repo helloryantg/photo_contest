@@ -7,6 +7,12 @@
     text-decoration: none;
 }
 
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .like-btn {
     width: 100px;
     height: 40px;
