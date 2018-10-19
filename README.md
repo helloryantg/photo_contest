@@ -21,7 +21,7 @@
 
 ## Getting Started
 ### Heroku
-[Heroku Link](https://salty-sea-47975.herokuapp.com/)
+[Check out my Photo Contest!](https://salty-sea-47975.herokuapp.com/)
 
 ### Trello Board
 [Trello Board](https://trello.com/b/dDPu7Nq6/photo-contest)
