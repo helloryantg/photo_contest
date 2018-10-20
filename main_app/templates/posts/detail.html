@@ -11,14 +11,18 @@
             <a class="blue" href="{% url 'posts_delete' post.id %}">Delete Post</a>
         {% endifequal %}
             <p class="grey">{{post.created_at}}</p>
-            <h3 class="blue">Likes: {{likes}}</h3>
+            <h1 class="blue">Likes: {{likes}}</h1>
             <br>
             {% if like == None %}
                 {% if has_liked_category == False %}
-                    <a class="like-btn" href="{% url 'add_like' post.id %}">Like</a>
-                {% endif %}
-            {% else %}
-                <a class="like-btn" href="{% url 'un_like' like.id %}">UnLike</a>
+                    <a href="{% url 'add_like' post.id %}">
+                        <img src="https://i.imgur.com/ynVSsqx.png" alt="Like">
+                    </a>
+                    {% endif %}
+                {% else %}
+                    <a href="{% url 'un_like' like.id %}">
+                        <img src="https://i.imgur.com/kK7z5Bx.png" alt="Unlike">
+                    </a>
             {% endif %}
             <br>
     </div>
