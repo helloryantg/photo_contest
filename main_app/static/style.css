@@ -7,6 +7,10 @@
     text-decoration: none;
 }
 
+.logo {
+    margin-top: 20px;
+}
+
 input[type="text"] {
     font-size: 22px;
 }
@@ -78,6 +82,11 @@ input[type="text"], input[type="password"] {
     align-items: center;
 }
 
+.inputfile {
+    position: relative;
+    left: 30px;
+}
+
 .confirm-delete-form {
     display: flex;
     flex-direction: column;
@@ -87,21 +96,6 @@ input[type="text"], input[type="password"] {
 
 label {
     display: none;
-}
-
-.btn {
-    height: 40px;
-    width: 200px;
-    font-size: 110%;
-    background-color: black;
-    color: white;
-    border-radius: 10px;
-    border-bottom: 2px solid white;
-}
-
-.btn:hover {
-    color: black;
-    background-color: white;
 }
 
 .account-photo {
@@ -191,8 +185,6 @@ h3 {
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     letter-spacing: 0.4px;
-    margin-left: 20px;
-    padding-top: 30px;
 }
 
 .nav-links {
@@ -233,10 +225,9 @@ h3 {
 }
 
 .contest-info {
-    height: 100px;
+    height: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     margin: 20px 0;
 }
 
@@ -279,7 +270,7 @@ h4 {
 }
 
 .categories a {
-    margin: 0;
+    margin: 0 6px;
     width: 200px;
     border: 1px solid #5575F6;
     color: #5575F6;
@@ -333,14 +324,14 @@ h4 {
 }
 
 .c-new-post {
-    border: 2px solid #5575F6;
+    border: 1px solid #5575F6;
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 20px;
 }
 
 .c-new-post:hover {
-    background-color: #5575F6;
-    color: white;
+    background-color: black;;
+    color: #5575F6;
 }
 
 .contest-rules {
@@ -352,6 +343,11 @@ h4 {
 }
 
 @media only screen and (min-width: 600px) {
+    .logo {
+        margin-left: 20px;
+        margin-top: 0px;
+    }
+    
     #id_title, #id_text {
         height: 50px;
         width: 300px;
@@ -386,7 +382,7 @@ h4 {
     }
 
     header {
-        width: 100%
+        width: 100%;
     }
 
     nav {

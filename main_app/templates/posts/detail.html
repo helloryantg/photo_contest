@@ -2,7 +2,8 @@
 
 {% block content %}
 <div class="details">
-    <h1>{{ post.title }}</h1>
+    <h3>{{ post.title }}</h3>
+    <br>
     <div class="detail-post">
         <img class="detail-photo" src="{{ post.photo_url }}">
         <br>
@@ -10,6 +11,7 @@
             <a class="blue" href="{% url 'posts_update' post.id %}">Edit Post</a> <span class="grey">|</span> 
             <a class="blue" href="{% url 'posts_delete' post.id %}">Delete Post</a>
         {% endifequal %}
+            <br>
             <p class="grey">{{post.created_at}}</p>
             <h1 class="blue">Likes: {{likes}}</h1>
             <br>

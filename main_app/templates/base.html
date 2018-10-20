@@ -13,7 +13,7 @@
 <body>
     <header>
         <nav>
-            <h3>Like.</h3>
+            <h3 class="logo">Like.</h3>
             <div class="nav-links">
                 <a href="{% url 'landing' %}">Contests</a> |
                 {% if user.is_authenticated %}
@@ -26,7 +26,6 @@
             </div>
         </nav>
     </header>
-    <hr>
     <main>
         {% block content %}
         {% endblock %}

@@ -19,7 +19,7 @@
         <div class="contest-likes">
             {% if user.is_authenticated %}
                 <div class="new-post">
-                    <a class="blue c-new-post" href="{% url 'posts_create' contest.id %}">Create a New Post</a>  
+                    <a class="blue-btn c-new-post" href="{% url 'posts_create' contest.id %}">Create a New Post</a>  
                 </div>
                 <br>    
             {% else %}
