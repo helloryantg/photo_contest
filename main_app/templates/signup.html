@@ -5,7 +5,18 @@
     <h1>Sign up</h1>
     <br>
     {% csrf_token %}
-    {{ form.as_p }}
+    {% for field in form%}
+      <p>
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.help_text %}
+          <small></small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p>{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
     <br>
     <button class="blue-btn larger" type="submit">Sign up</button>
   </form>

@@ -7,6 +7,22 @@
     text-decoration: none;
 }
 
+input[type="text"] {
+    font-size: 22px;
+}
+
+#id_username, #id_password, #id_password1, #id_password2 {
+    margin: 20px 0;
+    height: 45px;
+    width: 300px;
+    border: 2px solid #4157B7;
+}
+
+.login-form, .signup-form {
+    width: 400px;
+    margin: 100px auto;
+}
+
 .signup-form {
     display: flex;
     flex-direction: column;
@@ -42,8 +58,9 @@
     font-size: 26px;
 }
 
-input[type="text"] {
-    font-size: 20px;
+input[type="text"], input[type="password"] {
+    background-color: black;
+    color: #4157B7;
 }
 
 #id_title, #id_text  {
@@ -153,19 +170,28 @@ footer {
     font-size: 50%;
 }
 
-form {
-    color: #4157B7;
-}
-
 h1 {
     padding-top: 10px;
     color: #4157B7;
-    font-size: 1em;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.4px;
 }
 
 h2 {
     color: #4157B7;
     font-size: 5em;
+}
+
+h3 {
+    color: #4157B7;
+    font-size: 24px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    margin-left: 20px;
+    padding-top: 30px;
 }
 
 .nav-links {
@@ -239,8 +265,11 @@ h4 {
 .blue-btn {
     background-color: #5575F6;
     color: white;
-    border-radius: 25px;
-    padding: 8px 12px;
+    height: 40px;
+    width: 150px;
+    border-radius: 20px;
+    font-size: 12px;
+    border: 1px solid #5575F6;
     margin: 0 auto;
 }
 
@@ -327,10 +356,7 @@ h4 {
         width: 300px;
         font-size: 22px;
     }
-    
-    input[type="text"] {
-        font-size: 30px;
-    }
+
     
     .categories a {
         font-size: 100%;
@@ -346,7 +372,7 @@ h4 {
 
     .contest-container {
         margin: 10px 5px;
-        width: 45%;
+        width: 50%;
     }
     
     .nav-links a {
@@ -360,11 +386,6 @@ h4 {
 
     header {
         width: 100%
-    }
-
-    h1 {
-      margin: 20px;
-      font-size: 3em;  
     }
 
     nav {

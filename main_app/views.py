@@ -89,17 +89,19 @@ class PostDelete(DeleteView):
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
+        contest_id = self.get_object().contest_id
         if self.object.user == request.user:
            self.object.delete()
-           return redirect("/contests/1")
+           return redirect(f"/contests/{contest_id}")
         else:
-           return redirect("/contests/1")
+           return redirect(f"/contests/{contest_id}")
 
 @method_decorator(login_required, name='dispatch')
 class ContestCreate(CreateView):
     model = Contest
+
     fields = '__all__'
-    success_url = '/'
+    success_url = '/contests/{contest.id}'
 
 @method_decorator(login_required, name='dispatch')
 class ContestUpdate(UpdateView):
