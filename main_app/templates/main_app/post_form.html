@@ -4,12 +4,12 @@
 
 <form class="post-create-form" method="post" enctype="multipart/form-data">
     <h2>Post</h2>
-    <h3>Title:</h3>
+    <p>Title:</p>
     <br>
     {% csrf_token %}
     {{ form.as_p }}   
-    <br>
-    <h3 class="grey">Select image:</h3>  
+    <h3 class="grey">Select image:</h3>
+    <br>  
     <input class="inputfile" type="file" size="90" name="photo-file"> 
     <br>
     <input class="btn" type="submit" value="Submit!">

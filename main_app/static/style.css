@@ -70,10 +70,10 @@ input[type="text"], input[type="password"] {
 }
 
 .post-create-form {
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    height: 50vh;
+    height: 80vh;
     align-items: center;
 }
 
@@ -181,7 +181,7 @@ h1 {
 
 h2 {
     color: #4157B7;
-    font-size: 5em;
+    font-size: 3em;
 }
 
 h3 {
