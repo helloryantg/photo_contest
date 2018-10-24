@@ -270,7 +270,7 @@ h4 {
 }
 
 .categories a {
-    margin: 0 6px;
+    margin: 0 2px;
     width: 200px;
     border: 1px solid #5575F6;
     color: #5575F6;
@@ -339,7 +339,8 @@ h4 {
 }
 
 .post-container {
-    padding: 40px;
+    padding: 0 40px;
+    width: 95%;
 }
 
 @media only screen and (min-width: 600px) {
@@ -354,9 +355,14 @@ h4 {
         font-size: 22px;
     }
 
+    .photo {
+        
+
+    }
     
     .categories a {
         font-size: 100%;
+        margin: 0 6px;
     }
     
     .categories {
