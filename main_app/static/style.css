@@ -7,6 +7,10 @@
     text-decoration: none;
 }
 
+.passwords:nth-of-type(3) {
+    display: none;
+}
+
 .logo {
     margin-top: 20px;
 }
@@ -26,6 +30,11 @@ input[type="text"] {
 .login-form, .signup-form {
     width: 400px;
     margin: 100px auto;
+}
+
+.signup-page {
+    display: flex;
+    flex-direction: column;
 }
 
 .signup-form {

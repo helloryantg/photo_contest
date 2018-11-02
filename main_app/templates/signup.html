@@ -1,23 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form class="signup-form" method="post">
-    <h1>Sign up</h1>
-    <br>
-    {% csrf_token %}
-    {% for field in form%}
-      <p>
-        {{ field.label_tag }}
-        {{ field }}
-        {% if field.help_text %}
+<div class="signup-page">
+
+  <form class="signup-form" method="post">
+      <h1>Sign up</h1>
+      <br>
+      <p>Username</p>
+      {% csrf_token %}
+      {% for field in form%}
+        <p>
+          {{ field.label_tag }}
+          {{ field }}
+          {% if field.help_text %}
           <small></small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p>{{ error }}</p>
-        {% endfor %}
-      </p>
-    {% endfor %}
-    <br>
-    <button class="blue-btn larger" type="submit">Sign up</button>
-  </form>
+          <p class="passwords">Password</p>
+          {% endif %}
+          {% for error in field.errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </p>
+      {% endfor %}
+      <br>
+      <button class="blue-btn larger" type="submit">Sign up</button>
+    </form>
+  
+    <div>
+      <h1>Sign Up Instructions</h1>
+      <br>
+      <p class="grey">Please create a username and <br>password that are longer than 8 characters.</p>
+      <p class="grey">Passwords cannot be too simple <br>or the account will not be created. </p>
+    </div>
+</div>
 {% endblock %}
